@@ -1,0 +1,6 @@
+experiments: 1
+save: Yes
+load: Yes
+plot: Yes
+dev_split: 0.1
+eval_every: 5

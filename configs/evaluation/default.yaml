@@ -1,0 +1,8 @@
+metrics:
+  - _target_: avalanche.evaluation.metrics.StreamAccuracy
+  - _target_: avalanche.evaluation.metrics.ExperienceAccuracy
+  - _target_: avalanche.evaluation.metrics.TrainedExperienceAccuracy
+  - _target_: avalanche.evaluation.metrics.StreamBWT
+  - _target_: avalanche.evaluation.metrics.ExperienceBWT
+  - _target_: base.utils.StreamTrainableParameters
+enable_textlog: Yes
