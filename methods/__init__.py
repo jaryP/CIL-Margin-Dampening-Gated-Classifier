@@ -3,6 +3,6 @@
 
 from .ssil import SeparatedSoftmax
 
-from .margin import Margin
+from proposal.regularisation_md import MarginDampening
 
-from .replay_logits import LogitDistillation
+from .logit_distillation import LogitDistillation

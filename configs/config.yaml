@@ -1,9 +1,11 @@
 core:
-  project_name: 'margin_cl'
+  project_name: 'md-csc'
   dataset_root: ./dataset/
   results_path: ./results
   version: 1
-  tags: overconfidence, neural networks, deep learning, regularization, margin loss
+  tags: continual learning, neural networks, deep learning, regularization, class incremental learning
+  author: Jary Pomponi
+  github_repo: https://github.com/jaryP/Cascaded-Scaling-Classifier
 
 defaults:
   - hydra: base
@@ -17,6 +19,8 @@ defaults:
 
 device: cpu
 trainer_name: ${method_path:${method._target_}}
+
+# Wandb and debug stuff
 wandb_prefix: null
 wandb_tags: null
 enable_wandb: Yes

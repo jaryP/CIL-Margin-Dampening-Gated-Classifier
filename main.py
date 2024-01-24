@@ -24,8 +24,8 @@ from torch.utils.data import DataLoader
 from base.scenario import get_dataset_nc_scenario
 from methods.debug_plugins import LogitsDebugPlugin, TrainDebugPlugin, \
     GradientsDebugPlugin
-from models.utils import AvalanceCombinedModel, ScaledClassifier, \
-    PytorchCombinedModel, CustomMultiHeadClassifier
+from models.utils import AvalanceCombinedModel, PytorchCombinedModel, CustomMultiHeadClassifier
+from proposal.head_csc import CascadedScalingClassifier
 
 
 def make_train_dataloader(
@@ -219,7 +219,7 @@ def avalanche_training(cfg: DictConfig):
                 head = hydra.utils.instantiate(cfg.head, in_features=size)
 
                 if plugin_name == 'margin':
-                    assert isinstance(head, ScaledClassifier)
+                    assert isinstance(head, CascadedScalingClassifier)
                 elif plugin_name == 'icarl':
                     assert isinstance(head, IncrementalClassifier)
                 elif plugin_name == 'der':

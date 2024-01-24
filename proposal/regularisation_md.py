@@ -44,7 +44,7 @@ class LogitsDataset:
         return self
 
 
-class Margin(SupervisedTemplate):
+class MarginDampening(SupervisedTemplate):
     def __init__(self, model,
                  optimizer: Optimizer,
                  mem_size: int,

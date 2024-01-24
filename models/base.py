@@ -5,27 +5,24 @@ import torch
 from avalanche.models import MultiHeadClassifier, IncrementalClassifier
 from torch import nn
 
-from models import RoutingModel, CondensedRoutingModel
 from models.routing.model import MergingRoutingModel
 from models.utils import AvalanceCombinedModel, CustomMultiHeadClassifier, \
-    PytorchCombinedModel, LocalSimilarityClassifier, ScaledClassifier
+    PytorchCombinedModel
+from proposal.head_csc import CascadedScalingClassifier
 
 
 def get_cl_model(
         backbone,
         model_name: str,
-                 method_name: str,
-                 input_shape: Tuple[int, int, int],
-                 is_class_incremental_learning: bool = False,
-                 cml_out_features: int = None,
-                 is_stream: bool = False,
-                 head_classes=None,
-                 masking=False,
-                 **kwargs):
-
-    if isinstance(backbone, (RoutingModel,
-                             CondensedRoutingModel,
-                             MergingRoutingModel)):
+        method_name: str,
+        input_shape: Tuple[int, int, int],
+        is_class_incremental_learning: bool = False,
+        cml_out_features: int = None,
+        is_stream: bool = False,
+        head_classes=None,
+        masking=False,
+        **kwargs):
+    if isinstance(backbone, (MergingRoutingModel)):
         return backbone
 
     if method_name in ['cope', 'mcml']:
@@ -37,7 +34,7 @@ def get_cl_model(
     size = np.prod(o.shape)
 
     if method_name == 'margin':
-        classifier = ScaledClassifier(size)
+        classifier = CascadedScalingClassifier(size)
         model = PytorchCombinedModel(backbone, classifier)
 
         return model
@@ -65,8 +62,6 @@ def get_cl_model(
     else:
         if is_stream or method_name == 'icarl':
             classifier = IncrementalClassifier(size)
-        elif method_name == 'podnet':
-            classifier = LocalSimilarityClassifier(size)
         else:
             if method_name == 'er':
                 classifier = CustomMultiHeadClassifier(size, heads_generator)

@@ -1,4 +1,4 @@
-_target_: models.utils.ScaledClassifier
+_target_: proposal.CascadedScalingClassifier
 scale_each_class: Yes
 beta: 10
 gamma: 1

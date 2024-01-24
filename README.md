@@ -1,8 +1,4 @@
-## Structured Ensemble
-
-This repository contains a PyTorch implementation of the paper: 
-
-### [Cascaded Scaling Classifier: class incremental learning with probability scaling](-)
+# [Cascaded Scaling Classifier: class incremental learning with probability scaling](-)
 [Jary Pomponi](https://jarypomponi.com/), [Alessio Devoto](https://alessiodevoto.github.io/),  [Simone Scardapane](https://www.sscardapane.it/)
 
 ### Abstract
