@@ -12,7 +12,14 @@ Humans are capable of acquiring new knowledge and transferring learned knowledge
 * avalanche-lib==0.4
 * wandb==0.16.0
 
-[//]: # (### Experiments files)
+### Proposal and experiments
+
+In the paper we proposed a regularisation schema, Margin Dampening, coupled with a classifier head, called Cascaded Scaling Classifier. 
+You can find both in the folder proposal. 
+
+To run the experiments, you can use the files contained in the folder bash, which are grouped by the scenario.
+
+Use such files also to check the correct syntax to run custom experiments.
 
 [//]: # (The folder './config/' contains all the yaml files used for the experiments presented in the paper. )
 

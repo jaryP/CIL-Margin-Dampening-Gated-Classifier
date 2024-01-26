@@ -23,6 +23,12 @@ icarl)
   python main.py +scenario=cil_cifar10_5 model="$MODEL" +training=cifar10_5 +method=icarl method.memory_size=$memory  device="$DEVICE"
   done
 ;;
+lode)
+  python main.py +scenario=cil_cifar10_5 model="$MODEL" +training=cifar10_5 +method=lode method.mem_size=200 method.rho=0.2 device="$DEVICE"
+  python main.py +scenario=cil_cifar10_5 model="$MODEL" +training=cifar10_5 +method=lode method.mem_size=500 method.rho=0.5 device="$DEVICE"
+  python main.py +scenario=cil_cifar10_5 model="$MODEL" +training=cifar10_5 +method=lode method.mem_size=1000 method.rho=0.5 device="$DEVICE"
+  python main.py +scenario=cil_cifar10_5 model="$MODEL" +training=cifar10_5 +method=lode method.mem_size=2000 method.rho=0.5 device="$DEVICE"
+;;
 replay)
   for memory in +method=margin200 500 1000 2000 
   do
