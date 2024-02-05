@@ -77,9 +77,6 @@ class CascadedScalingClassifier(MultiTaskModule):
             scalers = [[torch.sigmoid(self.gamma * s(x) + self.beta) for s in v]
                        for v in self.past_scaling_heads.values()]
 
-            self.scalers = [[torch.sigmoid(self.gamma * s(x).detach() + self.beta) for s in v]
-                       for v in self.past_scaling_heads.values()]
-
             for i, (l, sig) in enumerate(zip(logits[1:], scalers)):
                 for j, s in enumerate(sig):
                     logits[j] = logits[j] * s
