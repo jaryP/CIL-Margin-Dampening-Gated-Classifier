@@ -1,4 +1,4 @@
-# [Cascaded Scaling Classifier: class incremental learning with probability scaling](-)
+# [Cascaded Scaling Classifier: class incremental learning with probability scaling](https://arxiv.org/abs/2402.01262)
 [Jary Pomponi](https://jarypomponi.com/), [Alessio Devoto](https://alessiodevoto.github.io/),  [Simone Scardapane](https://www.sscardapane.it/)
 
 ### Abstract
@@ -52,8 +52,13 @@ Use such files also to check the correct syntax to run custom experiments.
 
 Please cite our work if you find it useful:
 
-[//]: # (```)
-
-[//]: # ()
-[//]: # ()
-[//]: # (```)
+```
+@misc{pomponi2024cascaded,
+    title={Cascaded Scaling Classifier: class incremental learning with probability scaling},
+    author={Jary Pomponi and Alessio Devoto and Simone Scardapane},
+    year={2024},
+    eprint={2402.01262},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
+}
+```
