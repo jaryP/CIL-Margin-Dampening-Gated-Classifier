@@ -1,4 +1,4 @@
-# [Cascaded Scaling Classifier: class incremental learning with probability scaling](https://arxiv.org/abs/2402.01262)
+# [Class incremental learning with probability dampening and cascaded gated classifier](https://arxiv.org/abs/2402.01262)
 [Jary Pomponi](https://jarypomponi.com/), [Alessio Devoto](https://alessiodevoto.github.io/),  [Simone Scardapane](https://www.sscardapane.it/)
 
 ### Abstract
