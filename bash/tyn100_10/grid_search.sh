@@ -8,7 +8,7 @@ num_jobs="\j"
 
 case $METHOD in
 der)
-  for memory in 200 500 1000 2000
+  for memory in 2000 5000
     do
     for alpha in 0.1 0.2 0.5 0.8 1.0
     do
@@ -23,7 +23,7 @@ der)
   done
 ;;
 margin)
-for memory in 5000
+for memory in 2000 5000
 do
   for past_margin_w in 1 0.5 0.25 0.1 0.05 0.025 0.01
   do
@@ -35,8 +35,17 @@ do
   done
 done
 ;;
+lode)
+  for memory in 2000 5000
+    do
+    for rho in 0.1 0.2 0.5
+    do
+      python main.py +scenario=cil_tyn_10 model="$MODEL" +training=cifar10_5 +method=lode device=$DEVICE head=incremental method.rho=$rho experiment=dev method.mem_size=$memory hydra=search +wadnb_tags=[grid_search]
+    done
+  done
+;;
 logit_d)
-  for memory in 200 500 1000 2000 5000
+  for memory in 2000 5000
   do
     for alpha in 0.1 0.25 0.5 0.75 1
     do
@@ -44,15 +53,6 @@ logit_d)
         wait -n
       done
       python main.py +scenario=cil_tyn_10 model=$MODEL +training=tinyimagenet +method=logit_d device=$DEVICE method.mem_size=$memory method.alpha=$alpha hydra=search experiment=dev head=incremental +wadnb_tags=[grid_search] &
-    done
-  done
-;;
-lode)
-  for memory in 200 500 1000 2000 5000
-    do
-    for rho in 0.1 0.2 0.5 0.8 1.0
-    do
-      python main.py +scenario=cil_tyn_10 model="$MODEL" +training=cifar10_5 +method=lode device=$DEVICE head=incremental method.rho=$rho experiment=dev method.mem_size=$memory hydra=search +wadnb_tags=[grid_search]
     done
   done
 ;;
