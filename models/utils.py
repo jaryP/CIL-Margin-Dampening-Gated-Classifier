@@ -80,7 +80,7 @@ class AvalanceCombinedModel(MultiTaskModule):
                                                     **kwargs)
         return res
 
-    def forward(self, x: torch.Tensor, task_labels: torch.Tensor,
+    def forward(self, x: torch.Tensor, task_labels: torch.Tensor = None,
                 return_embeddings: bool = False,
                 **kwargs) \
             -> torch.Tensor:

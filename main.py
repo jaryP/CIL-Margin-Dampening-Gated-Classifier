@@ -12,7 +12,7 @@ import numpy as np
 import torch
 from avalanche.benchmarks import data_incremental_benchmark
 from avalanche.logging import WandBLogger, TextLogger
-from avalanche.models import IncrementalClassifier
+from avalanche.models import IncrementalClassifier, MultiHeadClassifier
 
 from avalanche.training import DER
 from avalanche.training.plugins import EvaluationPlugin
@@ -225,10 +225,14 @@ def avalanche_training(cfg: DictConfig):
                 elif plugin_name == 'der':
                     assert isinstance(head, torch.nn.Linear)
 
-                if plugin_name in ['margin', 'incrementalmargin', 'der', 'logitdistillation']:
-                    model = PytorchCombinedModel(backbone, head)
-                else:
+                if isinstance(head, MultiHeadClassifier):
                     model = AvalanceCombinedModel(backbone, head)
+                else:
+                # if plugin_name in ['margin', 'incrementalmargin', 'der', 'logitdistillation']:
+                    model = PytorchCombinedModel(backbone, head)
+                # else:
+                #     model = AvalanceCombinedModel(backbone, head)
+
             elif plugin_name == 'continualmetriclearning':
 
                 def heads_generator(i, o):
